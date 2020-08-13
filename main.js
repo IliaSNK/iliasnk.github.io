@@ -1,5 +1,5 @@
 var root = document.querySelector('#root')
-const data_url = 'https://listofusers-ba571.firebaseio.com'
+const data_url = 'https://iliasnk.github.io/data.json'
 var data
 var giveData = new XMLHttpRequest() // Создаём новый объект XMLHttpRequest
 giveData.open('GET', data_url, false);
