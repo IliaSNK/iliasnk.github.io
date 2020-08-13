@@ -10,6 +10,15 @@ if (giveData.status != 200) {
         data = JSON.parse(giveData.responseText) // responseText -- текст ответа.
         render (data)
     }
+
+data =
+    fetch('https://iliasnk.github.io/data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
 var flag_fn = ''; var flag_ln = ''; var flag_ph = 'hidden'; var flag_ab = ''; var flag_ec = ''
 function render (data) {
     if (document.getElementById('f_name').checked == true){flag_fn = ''} else {flag_fn = 'hidden'}
