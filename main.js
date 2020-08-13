@@ -1,16 +1,15 @@
 var root = document.querySelector('#root')
-const data_url = 'https://iliasnk.github.io/data.json'
 var data
-var giveData = new XMLHttpRequest() // Создаём новый объект XMLHttpRequest
-giveData.open('GET', data_url, false);
-giveData.send();
-if (giveData.status != 200) {
-    console.log( giveData.status + ': ' + giveData.statusText );
-    } else {
-        data = JSON.parse(giveData.responseText) // responseText -- текст ответа.
-        render (data)
-    }
+fetch('https://iliasnk.github.io/data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    console.log(json);
+    data = json.data
+    render(data)
 
+  });
 data =
     fetch('https://iliasnk.github.io/data.json')
   .then((response) => {
