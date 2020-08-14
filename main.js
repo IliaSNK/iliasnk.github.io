@@ -70,18 +70,19 @@ let Create = (e) =>{
 }
 function Delete(e) {
     var index; var count=0
-    data.forEach(el => {
+    if (confirm("Are you shure?"))
+    {data.forEach(el => {
         if (el.id == e.id){
             index = count
         }
         count++
     });
     data.splice(index, 1)
-    render(data)
+    render(data)}
 }
 function Update (e) {
     id = e.id
-    document.getElementById('form_title').innerHTML = id
+    document.getElementById('form_title').innerHTML = `ID &nbsp${id}`
     data.forEach(element => {
         if (element.id == e.id){
             document.getElementById('FName').value = element.name.firstName
@@ -125,7 +126,6 @@ function changeArr (){
 
 function check (e){
     var target = document.querySelectorAll(`.${e.name}`)
-    console.log(e.checked)
     if(e.checked == false){
         target.forEach(el =>{
             el.classList.add('hidden')

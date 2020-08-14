@@ -16,7 +16,7 @@
             <label for="f_name">First Name</label>
         </div>
         <div>
-            <input type="checkbox" id="l_name" name="l_name" onchange="check(this)" checked="true">
+            <input type="checkbox" id="l_name" name="l_name" onchange="check(this)" checked="true" disabled>
             <label for="l_name">Last Name</label>
         </div>
         <div>
@@ -54,12 +54,24 @@
             <div><label class="lable">First Name</label> <input placeholder="Jhon" type="text" id="FName">   </div> 
             <div><label class="lable">Last Name</label><input placeholder="Ray" type="text" id="LName"></div>
             <div><label class="lable">Phone number</label><input placeholder="+7 (944) 442-3173" type="text" id="Phone"></div>
-            <div><label class="lable">About</label><input placeholder="Enter information" type="text" id="About"></div>
-            <div><label class="lable">Eye color</label><input type="color" id="Color" value="green"></div>
             <div>
-                <button onclick="changeArr()">Ok</button>
-                <button onclick="cancel()">Cancel</button>
-            
+                <label class="lable">About</label>
+                <!-- <input placeholder="Enter information" type="text" id="About"> -->
+                <textarea placeholder="Enter information" id="About" cols="19" rows="2" ></textarea>
+            </div>
+            <div>
+                <label class="lable">Eye color</label>
+                <select id="Color">
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                    <option value="brown">brown</option>
+                    <option value="red">red</option>
+                    <option value="grey">grey</option>
+                </select>
+            </div>
+            <div class="button_group">
+                <div class="lable"><button class="btnOk" onclick="changeArr()">Ok</button></div>
+                <div class="lable"><button class="btnCl" onclick="cancel()">Cancel</button></div>
             </div> 
         </div>
     </div>
