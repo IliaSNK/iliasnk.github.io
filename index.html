@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test tasc</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div title="Create new User" id="New User" class="create" onclick="Create(this)"></div>
+    <div class="controll">
+        <div><strong>Show/Hide</strong></div>
+        <div>
+            <input type="checkbox" id="f_name" name="f_name" onchange="check(this)" checked="true">
+            <label for="f_name">First Name</label>
+        </div>
+        <div>
+            <input type="checkbox" id="l_name" name="l_name" onchange="check(this)" checked="true">
+            <label for="l_name">Last Name</label>
+        </div>
+        <div>
+            <input type="checkbox" id="phone" name="phone" onchange="check(this)">
+            <label for="phone">Phone</label>
+        </div>
+        <div>
+            <input type="checkbox" id="about" name="about" onchange="check(this)" checked="true">
+            <label for="about">About</label>
+        </div>
+        <div>
+            <input type="checkbox" id="color" name="color" onchange="check(this)" checked="true">
+            <label for="color">Eye color</label>
+
+            <div><strong>Sort</strong></div>
+            <select class="sort_sel" onchange="sort(this.options[this.selectedIndex].value)">
+                <option value="def">Default</option>
+                <option value="fnu">First Name ascending</option>
+                <option value="fnd">First Name descending</option>
+                <option value="lnu">Last Name ascending</option>
+                <option value="lnd">Last Name descending</option>
+                <option value="pnu">Phone number ascending</option>
+                <option value="pnd">Phone number descending</option>
+                <option value="abu">About ascending</option>
+                <option value="abd">About descending</option>
+                <option value="ecu">Eye color ascending</option>
+                <option value="ecd">Eye color descending</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form">
+        <div class="wrap">
+            <div><strong id="form_title"></strong></div>
+            <div><label class="lable">First Name</label> <input placeholder="Jhon" type="text" id="FName">   </div> 
+            <div><label class="lable">Last Name</label><input placeholder="Ray" type="text" id="LName"></div>
+            <div><label class="lable">Phone number</label><input placeholder="+7 (944) 442-3173" type="text" id="Phone"></div>
+            <div><label class="lable">About</label><input placeholder="Enter information" type="text" id="About"></div>
+            <div><label class="lable">Eye color</label><input type="color" id="Color" value="green"></div>
+            <div>
+                <button onclick="changeArr()">Ok</button>
+                <button onclick="cancel()">Cancel</button>
+            
+            </div> 
+        </div>
+    </div>
+    <div id="root">
+    </div>
+
+    
+
+
+
+    
+
+
+</body>
+<script src="main.js"></script>
+</html>
