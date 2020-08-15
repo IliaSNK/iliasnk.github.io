@@ -7,7 +7,8 @@
 
 
 body{
-    background-image: url('bg.jpg');
+    /* background-image: url('bg.jpg'); */
+    background-image: linear-gradient(to left top, #00796b, #007981, #007793, #0d739f, #486da2, #756aa5, #9b679c, #b8658b, #d57171, #da8b56, #c7ac4c, #9ccc65);
     background-attachment: fixed;
     background-position: center;
     background-size: 120%;
@@ -17,6 +18,9 @@ body{
     /* width: 200px; */
     /* margin: 0 auto; */
     text-align: center;
+    color: white;
+    text-shadow: 3px 3px teal, 6px 6px tomato;
+    margin-top: 40px;
 }
 .content{
     width: 55vw;
