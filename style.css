@@ -1,28 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Baloo Tamma 2', cursive;
-} 
+}
 
-
-body{
-    /* background-image: url('bg.jpg'); */
+body {
     background-image: linear-gradient(to left top, #00796b, #007981, #007793, #0d739f, #486da2, #756aa5, #9b679c, #b8658b, #d57171, #da8b56, #c7ac4c, #9ccc65);
     background-attachment: fixed;
     background-position: center;
     background-size: 120%;
     scroll-behavior: smooth;
 }
-.users{
-    /* width: 200px; */
-    /* margin: 0 auto; */
+
+.users {
     text-align: center;
-    color: white;
+    color: #fff;
     text-shadow: 3px 3px teal, 6px 6px tomato;
     margin-top: 40px;
 }
-.content{
+
+.content {
     width: 55vw;
     min-width: 560px;
     margin: 0 calc(22.5vw + 30px);
@@ -30,18 +29,23 @@ body{
     flex-direction: row;
     transition: .5s;
 }
-.table{
+
+.table {
     width: 50vw;
     min-width: 500px;
-    /* margin: 0 auto; */
-    background-color: #FFFFFF;
+    background-color: #fff;
     display: flex;
 }
-.table div{
+
+.table div {
     overflow: hidden;
 }
 
-.f_name, .l_name, .phone, .about, .color {
+.f_name,
+.l_name,
+.phone,
+.about,
+.color {
     width: 100%;
     opacity: 1;
     border: 1px solid #1565c050;
@@ -51,7 +55,8 @@ body{
     overflow: hidden;
     min-width: 100px;
 }
-.about{
+
+.about {
     text-align: center;
     overflow: hidden;
     display: -webkit-box;
@@ -59,24 +64,27 @@ body{
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
-.color{
+
+.color {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-.table_head{
+
+.table_head {
     margin-left: calc(auto - 60px);
     cursor: pointer;
 }
+
 .table_head .f_name,
 .table_head .l_name,
 .table_head .phone,
 .table_head .about,
-.table_head .color{
+.table_head .color {
     font-size: 20px;
 }
 
-.eye{
+.eye {
     margin: 5px;
     height: 25px;
     width: 25px;
@@ -84,27 +92,27 @@ body{
     opacity: .5;
 }
 
-.hidden{
+.hidden {
     z-index: -50;
     display: none;
     opacity: 0;
 }
 
-.controll{
+.controll {
     position: fixed;
     top: 10%;
     left: 5%;
-    /* width: 30%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .controll div {
     width: 200px;
 }
 
-.form{
+.form {
     z-index: -1;
     opacity: 0;
     position: fixed;
@@ -119,37 +127,42 @@ body{
     align-items: center;
 }
 
-.wrap{
+.wrap {
     width: 35vw;
     border-radius: 5px;
-    background-color: white;
+    background-color: #fff;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
 }
-.wrap input, select{
+
+.wrap input,
+select {
     width: 200px;
     height: 30px;
     font-size: 15px;
     text-align: start;
     margin: .4rem;
 }
-.wrap textarea{
+
+.wrap textarea {
     resize: none;
     font-size: 15px;
     margin: .4rem;
     overflow: auto;
     outline: none;
-	-moz-appearance: none;
-}
-.wrap button{
-    width: 70px;
-    outline: none;
-	-moz-appearance: none;
+    -moz-appearance: none;
 }
 
-.lable{
+.wrap button {
+    width: 70px;
+    outline: none;
+    -moz-appearance: none;
+}
+
+.lable {
     width: 150px;
 }
-.wrap div{
+
+.wrap div {
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -157,7 +170,9 @@ body{
     align-items: center;
 }
 
-.upd, .del, .create{
+.upd,
+.del,
+.create {
     width: 30px;
     height: 30px;
     margin-right: 5px;
@@ -166,17 +181,19 @@ body{
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
-    /* opacity: 0.5; */
 }
-.upd{
+
+.upd {
     background-color: #03A9F4;
     background-image: url('draw.svg');
 }
-.del{
+
+.del {
     background-color: #F44336;
     background-image: url('trash.svg');
 }
-.ctrl{
+
+.ctrl {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -184,72 +201,80 @@ body{
     transition: .5s;
     opacity: 0;
 }
-.content:hover  .ctrl{
+
+.content:hover .ctrl {
     transform: translateX(10%);
     opacity: 1;
 }
 
-.content:hover .table{
+.content:hover .table {
     background-color: #d2d2d2;
     transform: scale(1.005);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
 }
-.content:hover .table_head{
-    background-color: white;
+
+.content:hover .table_head {
+    background-color: #fff;
     transform: scale(1);
     box-shadow: none;
 }
 
-.create{
+.create {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: fixed;
     right: 5%;
     bottom: 5%;
-    background-color: #2196f3; 
+    background-color: #2196f3;
     transition: .5s;
     background-image: url('add.svg');
 }
-.create:hover{
+
+.create:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
-    /* background-color: #1565c0; */
 }
 
-.sort_sel{
+.sort_sel {
     max-width: 150px;
 }
 
-.lable button{
-    color: white;
+.lable button {
+    color: #fff;
     border-radius: 3px;
     transition: .3s;
     font-size: 15px;
 }
-.btnOk{
+
+.btnOk {
     background-color: #2196f3;
     border: 1px solid #1565c0;
 }
-.btnCl{
+
+.btnCl {
     background-color: #f44336;
     border: 1px solid #c62828;
 }
-.btnOk:hover{
+
+.btnOk:hover {
     background-color: #1565c0;
 }
-.btnCl:hover{
+
+.btnCl:hover {
     background-color: #c62828;
 }
-.pagination{
+
+.pagination {
     margin: 40px auto;
     width: 300px;
     display: flex;
-    /* border: 1px solid black; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.pagination div , .pagination .selected{
+
+.pagination div,
+.pagination .selected {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,25 +283,30 @@ body{
     border: 1px solid #ddd;
     font-size: 16px;
 }
-.pagination div{
+
+.pagination div {
     cursor: pointer;
     background-color: #fff;
     color: #337ab7;
 }
-.pagination .selected{
+
+.pagination .selected {
     color: #fff;
     background-color: #337ab7;
 }
 
-.pagination div:hover{
+.pagination div:hover {
     background-color: #d2d2d2;
 }
-.pagination .selected:hover{
+
+.pagination .selected:hover {
     background-color: #337ab7;
 }
-.next{
+
+.next {
     border-radius: 0 4px 4px 0;
 }
-.prev{
+
+.prev {
     border-radius: 4px 0 0 4px;
 }
