@@ -10,6 +10,7 @@ fetch('https://iliasnk.github.io/data.json')
 
   });
 var flag_fn = ''; var flag_ln = ''; var flag_ph = 'hidden'; var flag_ab = ''; var flag_ec = ''
+var p_num = 1
 function render (data) {
     if (document.getElementById('f_name').checked == true){flag_fn = ''} else {flag_fn = 'hidden'}
     if (document.getElementById('l_name').checked == true){flag_ln = ''} else {flag_ln = 'hidden'}
@@ -29,8 +30,15 @@ function render (data) {
             </div>
             <div style="width: 70px"></div>
         </div>`
-
-    data.forEach(el => {
+        let len = data.length
+        s_ind = (p_num * p_mod) - 10
+        if (len < (s_ind + 10)) {
+            e_ind = (len % s_ind) + s_ind
+        }
+        else{
+            e_ind = s_ind + p_mod
+        }   
+        data.slice(s_ind, e_ind).forEach(el => {
         root.innerHTML += `
             <div class="content">
                 <div class="table">
@@ -48,7 +56,15 @@ function render (data) {
                     <div title="delete" class="del" id="${el.id}" onclick="Delete(this)"></div>
                 </div>
             </div>`
-});
+    });
+    root.innerHTML +=   `<div class="pagination">
+                            <div class="prev" onclick="p_num--; render(data)"> << </div>
+                        </div>`
+    let pagination = document.querySelector(".pagination")
+    for (let i = 0; i < Math.ceil(data.length / p_mod); i++) {
+        pagination.innerHTML+=`<div class="page" onclick="p_num = this.innerHTML; render(data)">${i+1}</div>` 
+    }
+    pagination.innerHTML+='<div class="next" onclick="p_num++; render(data)"> >> </div>'
 }
 
 var id 
@@ -177,4 +193,20 @@ function sort (val) {
         default:
             break;
     }
+}
+
+
+var s_ind
+var e_ind
+var p_mod = 10
+let pagination = (p_num) => {
+    let len = data.length
+    s_ind = (p_num * p_mod) - 10
+    if (len < (s_ind + 10)) {
+        e_ind = (len % s_ind) + s_ind
+    }
+    else{
+        e_ind = s_ind + p_mod
+    }   
+    render(data.slice(s_ind, e_ind))
 }

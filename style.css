@@ -12,14 +12,14 @@ body{
     scroll-behavior: smooth;
 }
 .users{
-    width: 200px;
-    margin: 0 300px;
-    /* text-align: center; */
+    /* width: 200px; */
+    /* margin: 0 auto; */
+    text-align: center;
 }
 .content{
     width: 55vw;
     min-width: 560px;
-    margin: 0 300px;
+    margin: 0 calc(22.5vw + 30px);
     display: flex;
     flex-direction: row;
     transition: .5s;
@@ -38,7 +38,7 @@ body{
 .f_name, .l_name, .phone, .about, .color {
     width: 100%;
     opacity: 1;
-    border: 1px solid rgba(100, 100, 100, 0.5);
+    border: 1px solid #1565c050;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -67,10 +67,6 @@ body{
 .table_head .about,
 .table_head .color{
     font-size: 20px;
-}
-
-input {
-    /* margin: .4rem; */
 }
 
 .eye{
@@ -204,12 +200,13 @@ input {
     position: fixed;
     right: 5%;
     bottom: 5%;
-    background-color: #03A9F4; 
+    background-color: #2196f3; 
     transition: .5s;
     background-image: url('add.svg');
 }
 .create:hover{
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+    /* background-color: #1565c0; */
 }
 
 .sort_sel{
@@ -235,4 +232,34 @@ input {
 }
 .btnCl:hover{
     background-color: #c62828;
+}
+.pagination{
+    margin: 40px auto;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.pagination div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33px;
+    height: 33px;
+    color: #337ab7;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    /* background-color: white; */
+}
+.pagination div:hover{
+
+    background-color: rgb(211, 211, 211);
+}
+.next{
+    border-radius: 0 4px 4px 0;
+}
+.prev{
+    border-radius: 4px 0 0 4px;
 }
