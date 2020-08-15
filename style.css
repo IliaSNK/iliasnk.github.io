@@ -183,7 +183,7 @@ body{
 }
 
 .content:hover .table{
-    background-color: #BDBDBD;
+    background-color: #d2d2d2;
     transform: scale(1.005);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
 }
@@ -237,25 +237,34 @@ body{
     margin: 40px auto;
     width: 300px;
     display: flex;
+    /* border: 1px solid black; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.pagination div{
+.pagination div , .pagination .selected{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 33px;
     height: 33px;
-    color: #337ab7;
-    background-color: #fff;
     border: 1px solid #ddd;
     font-size: 16px;
-    /* background-color: white; */
 }
-.pagination div:hover{
+.pagination div{
+    background-color: #fff;
+    color: #337ab7;
+}
+.pagination .selected{
+    color: #fff;
+    background-color: #337ab7;
+}
 
-    background-color: rgb(211, 211, 211);
+.pagination div:hover{
+    background-color: #d2d2d2;
+}
+.pagination .selected:hover{
+    background-color: #337ab7;
 }
 .next{
     border-radius: 0 4px 4px 0;

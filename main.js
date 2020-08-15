@@ -1,5 +1,13 @@
-var root = document.querySelector('#root')
-var data
+var root = document.querySelector('#root') //Ссылка на корневой див для таблицы
+var data // массив объектов полученных из JSON
+var flag_fn = ''; var flag_ln = ''; var flag_ph = 'hidden'; var flag_ab = ''; var flag_ec = ''// Флаги для отображения столбцов
+var p_num = 1 // индекс страницы
+var max_p //колличество страниц
+var id // ид последнего обработанного эллемента массива объектов
+var s_ind // индекс  первого эллемента текущей страницы
+var e_ind // индекс последнего эллемента текущей страницы
+var p_mod = 10 // колличество эллементов на странице
+
 fetch('https://iliasnk.github.io/data.json')
   .then((response) => {
     return response.json();
@@ -9,14 +17,16 @@ fetch('https://iliasnk.github.io/data.json')
     render(data)
 
   });
-var flag_fn = ''; var flag_ln = ''; var flag_ph = 'hidden'; var flag_ab = ''; var flag_ec = ''
-var p_num = 1
-function render (data) {
-    if (document.getElementById('f_name').checked == true){flag_fn = ''} else {flag_fn = 'hidden'}
+
+let render = (data) => {  //Функция отображения таблицы
+    //Проверка состояния чекбоксов отображения
+    if (document.getElementById('f_name').checked == true){flag_fn = ''} else {flag_fn = 'hidden'} 
     if (document.getElementById('l_name').checked == true){flag_ln = ''} else {flag_ln = 'hidden'}
     if (document.getElementById('phone').checked == true){flag_ph = ''} else {flag_ph = 'hidden'}
     if (document.getElementById('about').checked == true){flag_ab = ''} else {flag_ab = 'hidden'}
     if (document.getElementById('color').checked == true){flag_ec = ''} else {flag_ec = 'hidden'}
+
+    //Добавляем загаловок таблицы
     root.innerHTML = `
     <div class="users"><h1>List of Users</h1></div>
         <div class="content">
@@ -30,14 +40,16 @@ function render (data) {
             </div>
             <div style="width: 70px"></div>
         </div>`
+        //Считаем 
         let len = data.length
-        s_ind = (p_num * p_mod) - 10
-        if (len < (s_ind + 10)) {
+        s_ind = (p_num * p_mod) - p_mod
+        if (len < (s_ind + p_mod)) {
             e_ind = (len % s_ind) + s_ind
         }
         else{
             e_ind = s_ind + p_mod
-        }   
+        }  
+
         data.slice(s_ind, e_ind).forEach(el => {
         root.innerHTML += `
             <div class="content">
@@ -58,16 +70,26 @@ function render (data) {
             </div>`
     });
     root.innerHTML +=   `<div class="pagination">
-                            <div class="prev" onclick="p_num--; render(data)"> << </div>
+                            <div class="prev" onclick="if(p_num > 1) p_num--; render(data)"> << </div>
                         </div>`
     let pagination = document.querySelector(".pagination")
-    for (let i = 0; i < Math.ceil(data.length / p_mod); i++) {
-        pagination.innerHTML+=`<div class="page" onclick="p_num = this.innerHTML; render(data)">${i+1}</div>` 
+    max_p = Math.ceil(data.length / p_mod)
+    p_num=Number(p_num)
+    let s
+    let e
+    if (p_num < 3){s=0; e=5} else {s=p_num - 3; e=p_num + 2}
+    if (p_num > max_p - 2){s=max_p-5; e=max_p}
+    for (let i = s; i < e; i++) {
+        let sel = 'page'
+        if(i+1 == p_num){
+            sel = 'selected'
+        }
+
+        pagination.innerHTML+=`<div class="${sel}" onclick="p_num = this.innerHTML; render(data)">${i+1}</div>` 
     }
-    pagination.innerHTML+='<div class="next" onclick="p_num++; render(data)"> >> </div>'
+    pagination.innerHTML+='<div class="next" onclick="if(p_num < max_p)p_num++; render(data)"> >> </div>'
 }
 
-var id 
 let Create = (e) =>{
     let id = data.length.toString()
     data.push({
@@ -196,17 +218,4 @@ function sort (val) {
 }
 
 
-var s_ind
-var e_ind
-var p_mod = 10
-let pagination = (p_num) => {
-    let len = data.length
-    s_ind = (p_num * p_mod) - 10
-    if (len < (s_ind + 10)) {
-        e_ind = (len % s_ind) + s_ind
-    }
-    else{
-        e_ind = s_ind + p_mod
-    }   
-    render(data.slice(s_ind, e_ind))
-}
+
