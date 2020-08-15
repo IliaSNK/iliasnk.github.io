@@ -6,7 +6,7 @@ var max_p //колличество страниц
 var id // ид последнего обработанного эллемента массива объектов
 var s_ind // индекс  первого эллемента текущей страницы
 var e_ind // индекс последнего эллемента текущей страницы
-var p_mod = 10 // колличество эллементов на странице
+var p_mod = 5 // колличество эллементов на странице
 
 fetch('https://iliasnk.github.io/data.json')
   .then((response) => {
@@ -32,11 +32,11 @@ let render = (data) => {  //Функция отображения таблицы
         <div class="content">
             
             <div class="table table_head">
-                <div class="f_name ${flag_fn}"><strong>First Name</strong></div>
-                <div class="l_name ${flag_ln}"><strong>Last Name</strong></div>
-                <div class="phone  ${flag_ph}"><strong>Phone number</strong></div>
-                <div class="about  ${flag_ab}"><strong>About</strong></div>
-                <div class="color  ${flag_ec}"><strong>Eye color</strong></div>
+                <div class="f_name ${flag_fn}" onclick="sort(this.id)" id="fnu" title="Sort by First Name"><strong>First Name</strong></div>
+                <div class="l_name ${flag_ln}" onclick="sort(this.id)" id="lnu" title="Sort by Last Name"><strong>Last Name</strong></div>
+                <div class="phone  ${flag_ph}" onclick="sort(this.id)" id="pnu" title="Sort by phone"><strong>Phone number</strong></div>
+                <div class="about  ${flag_ab}" onclick="sort(this.id)" id="abu" title="Sort by about"><strong>About</strong></div>
+                <div class="color  ${flag_ec}" onclick="sort(this.id)" id="ecu" title="Sort by eye color"><strong>Eye color</strong></div>
             </div>
             <div style="width: 70px"></div>
         </div>`
@@ -79,13 +79,22 @@ let render = (data) => {  //Функция отображения таблицы
     let e
     if (p_num < 3){s=0; e=5} else {s=p_num - 3; e=p_num + 2}
     if (p_num > max_p - 2){s=max_p-5; e=max_p}
+    if(max_p > 5){
     for (let i = s; i < e; i++) {
         let sel = 'page'
         if(i+1 == p_num){
             sel = 'selected'
         }
-
         pagination.innerHTML+=`<div class="${sel}" onclick="p_num = this.innerHTML; render(data)">${i+1}</div>` 
+    }}
+    else{
+        for (let i = 0; i < max_p; i++){
+            let sel = 'page'
+            if(i+1 == p_num){
+            sel = 'selected'
+            }
+            pagination.innerHTML+=`<div class="${sel}" onclick="p_num = this.innerHTML; render(data)">${i+1}</div>`
+        }
     }
     pagination.innerHTML+='<div class="next" onclick="if(p_num < max_p)p_num++; render(data)"> >> </div>'
 }
@@ -177,37 +186,41 @@ function check (e){
 }
 
 function sort (val) {
-    var sortData = JSON.parse(JSON.stringify(data))
     switch (val) {
         case 'fnu' : 
-        render(sortData.sort((a, b) => a.name.firstName > b.name.firstName ? 1 : -1))
+        render(data.sort((a, b) => a.name.firstName > b.name.firstName ? 1 : -1))
+        document.getElementById('fnu').id = 'fnd'
         break
         case 'fnd' : 
-        render(sortData.sort((a, b) => a.name.firstName < b.name.firstName ? 1 : -1))
+        render(data.sort((a, b) => a.name.firstName < b.name.firstName ? 1 : -1))
         break
         case 'lnu' : 
-        render(sortData.sort((a, b) => a.name.lastName > b.name.lastName ? 1 : -1))
+        render(data.sort((a, b) => a.name.lastName > b.name.lastName ? 1 : -1))
+        document.getElementById('lnu').id = 'lnd'
         break
         case 'lnd' : 
-        render(sortData.sort((a, b) => a.name.lastName < b.name.lastName ? 1 : -1))
+        render(data.sort((a, b) => a.name.lastName < b.name.lastName ? 1 : -1))
         break
         case 'pnu' : 
-        render(sortData.sort((a, b) => a.phone > b.phone ? 1 : -1))
+        render(data.sort((a, b) => a.phone > b.phone ? 1 : -1))
+        document.getElementById('pnu').id = 'pnd'
         break
         case 'pnd' : 
-        render(sortData.sort((a, b) => a.phone < b.phone ? 1 : -1))
+        render(data.sort((a, b) => a.phone < b.phone ? 1 : -1))
         break
         case 'abu' : 
-        render(sortData.sort((a, b) => a.about > b.about ? 1 : -1))
+        render(data.sort((a, b) => a.about > b.about ? 1 : -1))
+        document.getElementById('abu').id = 'abd'
         break
         case 'abd' : 
-        render(sortData.sort((a, b) => a.about < b.about ? 1 : -1))
+        render(data.sort((a, b) => a.about < b.about ? 1 : -1))
         break
         case 'ecu' : 
-        render(sortData.sort((a, b) => a.eyeColor > b.eyeColor ? 1 : -1))
+        render(data.sort((a, b) => a.eyeColor > b.eyeColor ? 1 : -1))
+        document.getElementById('ecu').id = 'ecd'
         break
         case 'ecd' : 
-        render(sortData.sort((a, b) => a.eyeColor < b.eyeColor ? 1 : -1))
+        render(data.sort((a, b) => a.eyeColor < b.eyeColor ? 1 : -1))
         break
         case 'def':
         render(data)

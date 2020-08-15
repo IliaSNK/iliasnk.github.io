@@ -31,19 +31,12 @@
             <input type="checkbox" id="color" name="color" onchange="check(this)" checked="true">
             <label for="color">Eye color</label>
 
-            <div><strong>Sort</strong></div>
-            <select class="sort_sel" onchange="sort(this.options[this.selectedIndex].value)">
-                <option value="def">Default</option>
-                <option value="fnu">First Name ascending</option>
-                <option value="fnd">First Name descending</option>
-                <option value="lnu">Last Name ascending</option>
-                <option value="lnd">Last Name descending</option>
-                <option value="pnu">Phone number ascending</option>
-                <option value="pnd">Phone number descending</option>
-                <option value="abu">About ascending</option>
-                <option value="abd">About descending</option>
-                <option value="ecu">Eye color ascending</option>
-                <option value="ecd">Eye color descending</option>
+            <div><strong>Number of items per page</strong></div>
+            <select class="sort_sel" onchange="p_mod=Number((this.options[this.selectedIndex].value)); p_num=1; render(data)">
+                <option value="5">5 elements</option>
+                <option value="10">10 elements</option>
+                <option value="25">25 elements</option>
+                <option value="50">50 elements</option>
             </select>
         </div>
     </div>
@@ -75,16 +68,8 @@
             </div> 
         </div>
     </div>
-    <div id="root">
-    </div>
-
-    
-
-
-
-    
-
-
+    <div id="root"></div>
+    <div id="pagination"></div>
 </body>
 <script src="main.js"></script>
 </html>
